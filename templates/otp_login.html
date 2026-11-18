@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Client OTP Login{% endblock %}
+{% block content %}
+<h2 class="style12">WELCOME TO CLIENT LOGIN</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<form action="{{ url_for('client_otp') }}" method="post" id="leavereply">
+<table width="598" border="1" align="center">
+  <tr>
+    <td width="286" bgcolor="#FFFF00"><span class="style12">Name (required)</span></td>
+    <td width="356"><input required="required" name="userid" type="text" size="50" /></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFF00"><span class="style12">Password (required)</span></td>
+    <td><input required="required" name="pass" type="password" size="50" /></td>
+  </tr>
+  <tr>
+    <td><div align="right"></div></td>
+    <td><input type="submit" name="imageField" value="Get OTP" /></td>
+  </tr>
+</table>
+</form>
+{% endblock %}

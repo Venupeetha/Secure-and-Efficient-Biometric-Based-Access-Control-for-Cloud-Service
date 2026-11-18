@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Download Files{% endblock %}
+{% block content %}
+<h2 class="style12">Download Files</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<form action="{{ url_for('client_download') }}" method="post">
+<table width="598" border="1" align="center">
+  <tr>
+    <td width="286" bgcolor="#FFFF00"><span class="style12">Enter File Name :- </span></td>
+    <td width="356"><input required="required" name="t1" type="text" size="50" /></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFF00"><span class="style12">Enter Owner Name :- </span></td>
+    <td><input required="required" name="t22" type="text" size="50" /></td>
+  </tr>
+  <tr>
+    <td><div align="right"></div></td>
+    <td><input type="submit" name="Submit" value="Download" /></td>
+  </tr>
+</table>
+</form>
+<p><a href="{{ url_for('client_main') }}">Back</a></p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>Client</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    <li><a href="{{ url_for('client_main') }}">Home</a></li>
+    <li><a href="{{ url_for('client_files') }}">View All Files</a></li>
+    <li><a href="{{ url_for('client_download') }}">Download</a></li>
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<h2 class="style12">{{ title }}</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<table width="100%" border="1" align="center">
+  <tr bgcolor="#FFFF00">
+    <td><strong>ID</strong></td>
+    <td><strong>{% if kind == 'owner' %}Data Owner Name{% else %}Data Client Name{% endif %}</strong></td>
+    <td><strong>Status</strong></td>
+    <td><strong>Details</strong></td>
+    <td><strong>Authorize</strong></td>
+  </tr>
+  {% for r in rows %}
+  <tr>
+    <td>{{ r.id }}</td>
+    <td>{{ r.username }}</td>
+    <td>{{ r.status }}</td>
+    <td>{% if kind == 'owner' %}<a href="{{ url_for('cloud_owner_details', name=r.username) }}">View Details</a>{% else %}<a href="{{ url_for('cloud_client_details', name=r.username) }}">View Details</a>{% endif %}</td>
+    <td>{% if r.status != 'Authorized' %}{% if kind == 'owner' %}<a href="{{ url_for('cloud_authorize_owner', pid=r.id) }}">Authorize</a>{% else %}<a href="{{ url_for('cloud_authorize_client', pid=r.id) }}">Authorize</a>{% endif %}{% else %}Authorized{% endif %}</td>
+  </tr>
+  {% else %}
+  <tr><td colspan="5">No records yet.</td></tr>
+  {% endfor %}
+</table>
+<p><a href="{{ url_for(back) }}">Back</a></p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>Cloud</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    <li><a href="{{ url_for('cloud_main') }}">Home</a></li>
+    <li><a href="{{ url_for('cloud_owners') }}">View All Owners and Authorize</a></li>
+    <li><a href="{{ url_for('cloud_clients') }}">View All Clients and Authorize</a></li>
+    <li><a href="{{ url_for('cloud_files') }}">View All Cloud Files</a></li>
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}

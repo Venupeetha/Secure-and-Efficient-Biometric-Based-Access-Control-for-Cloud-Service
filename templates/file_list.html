@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<h2 class="style12">{{ title }}</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<table width="100%" border="1" align="center">
+  <tr bgcolor="#FFFF00">
+    <td><strong>File Name</strong></td>
+    <td><strong>Session Key</strong></td>
+    <td><strong>Private Key</strong></td>
+    <td><strong>Rank</strong></td>
+    <td><strong>Date &amp; Time</strong></td>
+    <td><strong>Access Authorization</strong></td>
+    {% if menu == 'cloud' %}<td><strong>File Owner</strong></td><td><strong>Give Access Control</strong></td>{% endif %}
+  </tr>
+  {% for f in files %}
+  <tr>
+    <td>{{ f.fname }}</td>
+    <td>{{ f.trapdoor }}</td>
+    <td>{{ f.sk }}</td>
+    <td>{{ f.rank }}</td>
+    <td>{{ f.dt }}</td>
+    <td>{{ f.Access }}</td>
+    {% if menu == 'cloud' %}
+    <td>{{ f.user }}</td>
+    <td><a href="{{ url_for('cloud_access', fid=f.id) }}">Give Access Control</a></td>
+    {% endif %}
+  </tr>
+  {% else %}
+  <tr><td colspan="8">No files yet.</td></tr>
+  {% endfor %}
+</table>
+<p><a href="{{ url_for(back) }}">Back</a></p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>Sidebar</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    {% if menu == 'client' %}
+    <li><a href="{{ url_for('client_main') }}">Home</a></li>
+    <li><a href="{{ url_for('client_files') }}">View All Files</a></li>
+    <li><a href="{{ url_for('client_download') }}">Download</a></li>
+    {% elif menu == 'owner' %}
+    <li><a href="{{ url_for('owner_main') }}">Home</a></li>
+    <li><a href="{{ url_for('owner_upload') }}">Upload</a></li>
+    <li><a href="{{ url_for('owner_files') }}">View All Uploaded Files</a></li>
+    <li><a href="{{ url_for('owner_transactions') }}">View All Transactions</a></li>
+    {% else %}
+    <li><a href="{{ url_for('cloud_main') }}">Home</a></li>
+    <li><a href="{{ url_for('cloud_files') }}">View All Cloud Files</a></li>
+    <li><a href="{{ url_for('cloud_transactions') }}">View All Transactions</a></li>
+    <li><a href="{{ url_for('cloud_attackers') }}">View All Attackers</a></li>
+    {% endif %}
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}

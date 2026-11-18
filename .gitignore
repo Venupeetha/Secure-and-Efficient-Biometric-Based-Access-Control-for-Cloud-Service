@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Database / runtime files created on first run (do NOT commit)
+app.db
+instance/
+*.sqlite3
+*.db
+
+# Environment / secrets
+.env
+.env.local
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor (keep .vscode/launch.json + settings.json tracked)
+.idea/
+*.swp
+*.swo

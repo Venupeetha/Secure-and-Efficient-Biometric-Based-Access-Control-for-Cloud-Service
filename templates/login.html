@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<h2 class="style12">{{ title }}</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<form action="{% if role == 'client' %}{{ url_for('client_login') }}{% elif role == 'owner' %}{{ url_for('owner_login') }}{% elif role == 'cloud' %}{{ url_for('cloud_login') }}{% elif role == 'trustee' %}{{ url_for('trustee_login') }}{% else %}{{ url_for('authority_login') }}{% endif %}" method="post" id="leavereply">
+<table width="598" border="1" align="center">
+  <tr>
+    <td width="286" bgcolor="#FFFF00"><span class="style12">Name (required)</span></td>
+    <td width="356"><input required="required" name="userid" type="text" size="50" /></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFF00"><span class="style12">Password (required)</span></td>
+    <td><input required="required" name="pass" type="password" size="50" /></td>
+  </tr>
+  <tr>
+    <td><div align="right"></div></td>
+    <td><input type="submit" name="imageField" value="Login" /></td>
+  </tr>
+</table>
+</form>
+{% if role == 'client' %}
+<p><a href="{{ url_for('client_register') }}">New Client ?? Register</a> &nbsp;|&nbsp; <a href="{{ url_for('client_otp') }}">Login with OTP</a></p>
+{% elif role == 'owner' %}
+<p><a href="{{ url_for('owner_register') }}">New Client ?? Register</a></p>
+{% endif %}
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>Sidebar</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('client_login') }}">Client</a></li>
+    <li><a href="{{ url_for('cloud_login') }}">Remote Server</a></li>
+    <li><a href="{{ url_for('trustee_login') }}">Authenticate Server</a></li>
+    <li><a href="{{ url_for('owner_login') }}">Owner</a></li>
+  </ul>
+</div>
+{% endblock %}

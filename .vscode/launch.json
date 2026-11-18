@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run (SQLite, no setup)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/app.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "DB_TYPE": "sqlite"
+            }
+        },
+        {
+            "name": "Run (MySQL)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/app.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "DB_TYPE": "mysql"
+            }
+        }
+    ]
+}

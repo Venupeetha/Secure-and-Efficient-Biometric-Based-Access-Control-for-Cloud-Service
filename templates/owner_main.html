@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Owner Main{% endblock %}
+{% block content %}
+<h2 class="style12">WELCOME TO OWNER :: {{ username }}</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<p>Use the Owner Menu to upload a file, view your uploaded files and view all transactions.</p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>Owner</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    <li><a href="{{ url_for('owner_main') }}">Home</a></li>
+    <li><a href="{{ url_for('owner_upload') }}">Upload</a></li>
+    <li><a href="{{ url_for('owner_files') }}">View All Uploaded Files</a></li>
+    <li><a href="{{ url_for('owner_transactions') }}">View All Transactions</a></li>
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}

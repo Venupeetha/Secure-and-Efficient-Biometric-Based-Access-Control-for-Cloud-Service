@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<h2 class="style12">{{ title }}</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<h3>Transaction Results</h3>
+<p>Loading graph...</p>
+<table width="100%" border="1" align="center">
+  <tr bgcolor="#FFFF00">
+    <td><strong>File Name</strong></td>
+    <td><strong>Time Delay</strong></td>
+    <td><strong>Throughput</strong></td>
+    <td><strong>Rank (downloads)</strong></td>
+  </tr>
+  {% for r in rows %}
+  <tr>
+    <td>{{ r.fname }}</td>
+    <td>{{ r.tdelay }}</td>
+    <td>{{ r.tpt }}</td>
+    <td>{% for f in files %}{% if f.fname == r.fname %}{{ f.rank }}{% endif %}{% endfor %}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% for r in rows %}
+<p>{{ r.fname }} - Time Delay: {{ r.tdelay }}<br />
+<span style="display:inline-block;background:#78bbe6;height:14px;width:{{ (r.tdelay|int // 4) }}px;">&nbsp;</span></p>
+{% endfor %}
+<p><a href="{{ url_for('cloud_main') }}">Back</a></p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>Cloud</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    <li><a href="{{ url_for('cloud_main') }}">Home</a></li>
+    <li><a href="{{ url_for('cloud_results_td') }}">View Time Delay Results</a></li>
+    <li><a href="{{ url_for('cloud_results_tpt') }}">View Throughput Results</a></li>
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}

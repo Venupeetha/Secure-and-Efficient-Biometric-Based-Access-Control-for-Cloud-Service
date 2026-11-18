@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Trusted Authority Main{% endblock %}
+{% block content %}
+<h2 class="style12">WELCOME TO Authentication Server...</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<p>Logged in as Trustee: <strong>{{ username }}</strong>. Use the CA Menu to
+generate a secret (private) key for a file - after a fingerprint check - and
+to view all attackers.</p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>CA</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    <li><a href="{{ url_for('trustee_main') }}">Home</a></li>
+    <li><a href="{{ url_for('trustee_generate_key') }}">Generate Private Key</a></li>
+    <li><a href="{{ url_for('trustee_attackers') }}">View All Attackers</a></li>
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}

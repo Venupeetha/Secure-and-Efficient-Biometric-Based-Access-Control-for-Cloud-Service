@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}View Files and Generate Private Key{% endblock %}
+{% block content %}
+<h2 class="style12">View Files and Generate Private Key</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<table width="100%" border="1" align="center">
+  <tr bgcolor="#FFFF00">
+    <td><strong>File Name</strong></td>
+    <td><strong>Digital Sign</strong></td>
+    <td><strong>Secret Key</strong></td>
+    <td><strong>Rank</strong></td>
+    <td><strong>Date &amp; Time</strong></td>
+    <td><strong>Access Authorization</strong></td>
+    <td><strong>File Owner</strong></td>
+    <td><strong>Generate Private Key</strong></td>
+  </tr>
+  {% for f in files %}
+  <tr>
+    <td>{{ f.fname }}</td>
+    <td>{{ f.trapdoor }}</td>
+    <td>{% if f.sk == 'No' %}<a href="{{ url_for('trustee_generate_key_form', fid=f.id) }}">Generate Private Key</a>{% else %}{{ f.sk }}{% endif %}</td>
+    <td>{{ f.rank }}</td>
+    <td>{{ f.dt }}</td>
+    <td>{{ f.Access }}</td>
+    <td>{{ f.user }}</td>
+    <td><a href="{{ url_for('trustee_generate_key_form', fid=f.id) }}">Generate Private Key</a></td>
+  </tr>
+  {% else %}
+  <tr><td colspan="8">No files yet.</td></tr>
+  {% endfor %}
+</table>
+<p><a href="{{ url_for('trustee_main') }}">Back</a></p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>CA</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    <li><a href="{{ url_for('trustee_main') }}">Home</a></li>
+    <li><a href="{{ url_for('trustee_generate_key') }}">Generate Private Key</a></li>
+    <li><a href="{{ url_for('trustee_attackers') }}">View All Attackers</a></li>
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}

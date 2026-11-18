@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Enter OTP{% endblock %}
+{% block content %}
+<h2 class="style12">Enter OTP</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<p>Hello <strong>{{ username }}</strong> - your one-time password is:</p>
+<p class="style12">OTP: {{ otp }}</p>
+<p>(Demo only: the original project had no SMS or email to send the OTP with,
+so it is shown here on the page. In the original code the OTP was checked
+against a user.otp column that does not exist in the database.)</p>
+<form action="{{ url_for('client_otp_check') }}" method="post" id="leavereply">
+<table width="598" border="1" align="center">
+  <tr>
+    <td width="286" bgcolor="#FFFF00"><span class="style12">Enter OTP (required)</span></td>
+    <td width="356"><input required="required" name="otp" type="text" size="50" /></td>
+  </tr>
+  <tr>
+    <td><div align="right"></div></td>
+    <td><input type="submit" value="Verify OTP" /></td>
+  </tr>
+</table>
+</form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Details{% endblock %}
+{% block content %}
+<h2 class="style12">WELCOME TO CLOUD SERVER</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+{% if row %}
+<table width="598" border="1" align="center">
+  <tr><td bgcolor="#FFFF00"><strong>Name:</strong></td><td>{{ row.username }}</td></tr>
+  <tr><td bgcolor="#FFFF00"><strong>E-Mail:</strong></td><td>{{ row.email }}</td></tr>
+  <tr><td bgcolor="#FFFF00"><strong>Mobile:</strong></td><td>{{ row.mobile }}</td></tr>
+  <tr><td bgcolor="#FFFF00"><strong>Date Of Birth:</strong></td><td>{{ row.dob }}</td></tr>
+  <tr><td bgcolor="#FFFF00"><strong>Address:</strong></td><td>{{ row.address }}</td></tr>
+  <tr><td bgcolor="#FFFF00"><strong>Status:</strong></td><td>{{ row.status }}</td></tr>
+  <tr><td bgcolor="#FFFF00"><strong>Gender:</strong></td><td>{{ row.gender }}</td></tr>
+  <tr><td bgcolor="#FFFF00"><strong>Pincode:</strong></td><td>{{ row.pincode }}</td></tr>
+  <tr><td bgcolor="#FFFF00"><strong>Profile Picture:</strong></td><td><img src="{{ url_for('serve_image', kind=kind, pid=row.id) }}" width="120" /></td></tr>
+  <tr><td bgcolor="#FFFF00"><strong>Finger Print:</strong></td><td><img src="{{ url_for('serve_thumb', kind=kind, pid=row.id) }}" width="120" /><br />{{ row.thumbname }}</td></tr>
+</table>
+{% else %}
+<p>No such person found.</p>
+{% endif %}
+<p><a href="{{ url_for(back) }}">Back</a></p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>Cloud</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    <li><a href="{{ url_for('cloud_main') }}">Home</a></li>
+    <li><a href="{{ url_for('cloud_owners') }}">View All Owners and Authorize</a></li>
+    <li><a href="{{ url_for('cloud_clients') }}">View All Clients and Authorize</a></li>
+    <li><a href="{{ url_for('cloud_files') }}">View All Cloud Files</a></li>
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}

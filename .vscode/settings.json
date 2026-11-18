@@ -1,0 +1,7 @@
+{
+    "python.terminal.activateEnvironment": true,
+    "python.testing.pytestEnabled": false,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "files.eol": "\n"
+}

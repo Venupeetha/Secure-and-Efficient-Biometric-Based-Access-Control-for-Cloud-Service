@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Confirm Upload Data{% endblock %}
+{% block content %}
+<h2 class="style12">Confirm Upload Data</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<form action="{{ url_for('owner_upload2') }}" method="post">
+<table width="598" border="1" align="center">
+  <tr>
+    <td width="286" bgcolor="#FFFF00"><span class="style12">File Name :- </span></td>
+    <td width="356"><input name="t42" type="text" size="50" value="{{ fname }}" readonly="readonly" /></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFF00"><span class="style12">Encrypted Data :- </span></td>
+    <td><textarea cols="50" rows="10" readonly="readonly">{{ enc_preview }}</textarea>
+    <textarea name="text2" style="display:none;">{{ content }}</textarea></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFF00"><span class="style12">Session Key (SHA-1 trapdoor) :- </span></td>
+    <td><input name="t4" type="text" size="50" value="{{ mac }}" readonly="readonly" /></td>
+  </tr>
+  <tr>
+    <td><div align="right"></div></td>
+    <td><input type="submit" name="Submit2" value="Upload" /></td>
+  </tr>
+</table>
+</form>
+<p>The file content is shown Base64-encoded here, exactly as the original
+Upload1.jsp showed it. When you press Upload, the content is stored
+Fernet-encrypted in the cloudserver and authorityfile tables (the original
+stored it as plain text).</p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>Sidebar</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    <li><a href="{{ url_for('owner_main') }}">Home</a></li>
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}

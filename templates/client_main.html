@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}End Client Main{% endblock %}
+{% block content %}
+<h2 class="style12">WELCOME TO USER :: {{ username }}</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<p>Use the Client Menu to view all files and download a file with its secret key.</p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>Client</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    <li><a href="{{ url_for('client_main') }}">Home</a></li>
+    <li><a href="{{ url_for('client_files') }}">View All Files</a></li>
+    <li><a href="{{ url_for('client_download') }}">Download</a></li>
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}

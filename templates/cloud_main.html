@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Remote Server{% endblock %}
+{% block content %}
+<h2 class="style12">WELCOME TO CLOUD SERVER</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<p>Logged in as Cloud Server: <strong>{{ username }}</strong>. Use the Cloud Menu
+to authorize owners and clients, view cloud files, give access control, view
+transactions, attackers and results.</p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>Cloud</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    <li><a href="{{ url_for('cloud_main') }}">Home</a></li>
+    <li><a href="{{ url_for('cloud_owners') }}">View All Owners and Authorize</a></li>
+    <li><a href="{{ url_for('cloud_clients') }}">View All Clients and Authorize</a></li>
+    <li><a href="{{ url_for('cloud_files') }}">View All Cloud Files</a></li>
+    <li><a href="{{ url_for('cloud_transactions') }}">View All Transactions</a></li>
+    <li><a href="{{ url_for('cloud_attackers') }}">View All Attackers</a></li>
+    <li><a href="{{ url_for('cloud_results') }}">View File Score Results</a></li>
+    <li><a href="{{ url_for('cloud_results_td') }}">View Time Delay Results</a></li>
+    <li><a href="{{ url_for('cloud_results_tpt') }}">View Throughput Results</a></li>
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}

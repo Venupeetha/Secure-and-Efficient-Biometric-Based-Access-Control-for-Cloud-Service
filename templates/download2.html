@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Confirm Download Files{% endblock %}
+{% block content %}
+<h2 class="style12">Confirm Download Files</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<p class="style12">File Contents</p>
+<pre>{{ content }}</pre>
+<p><a href="{{ url_for('client_download_file', fid=row.id) }}">Download</a></p>
+<p><a href="{{ url_for('client_main') }}">Back</a></p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>Client</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    <li><a href="{{ url_for('client_main') }}">Home</a></li>
+    <li><a href="{{ url_for('client_files') }}">View All Files</a></li>
+    <li><a href="{{ url_for('client_download') }}">Download</a></li>
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}

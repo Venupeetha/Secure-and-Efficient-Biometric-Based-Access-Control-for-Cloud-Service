@@ -1,0 +1,3 @@
+Sample resource file for the Biometric Secure Access demo.
+File: Sample1.txt - uploaded by the Owner (Raja).
+This file is stored encrypted in the cloud server tables.

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Biometric Authentication{% endblock %}
+{% block content %}
+<h2 class="style12">Biometric Authentication</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<form action="{% if action == 'cloud_access' %}{{ url_for('cloud_access', fid=fid) }}{% elif action == 'trustee_generate_key_form' %}{{ url_for('trustee_generate_key_form', fid=fid) }}{% elif role == 'owner' %}{{ url_for('owner_bio') }}{% elif role == 'cloud' %}{{ url_for('cloud_access', fid=fid) }}{% else %}{{ url_for('client_bio') }}{% endif %}" method="post" id="sendemail" enctype="multipart/form-data">
+<table width="598" border="1" align="center">
+  <tr>
+    <td width="286" bgcolor="#FFFF00"><span class="style12">Select Finger Print(required)</span></td>
+    <td width="356"><input required="required" type="file" name="pic2" /></td>
+  </tr>
+  <tr>
+    <td><div align="right"></div></td>
+    <td><input type="submit" name="Submit" value="Verify Finger Print" /></td>
+  </tr>
+</table>
+</form>
+<p>Upload the same fingerprint image you registered with. The original project
+compared the uploaded file's <strong>name</strong> with the stored fingerprint
+name; this version also accepts the same fingerprint file itself.</p>
+<p><a href="{{ back }}">Back</a></p>
+{% endblock %}

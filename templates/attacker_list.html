@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<h2 class="style12">{{ title }}</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<table width="100%" border="1" align="center">
+  <tr bgcolor="#FFFF00">
+    <td><strong>Attacker Name</strong></td>
+    <td><strong>File Name</strong></td>
+    <td><strong>Secret Key Used</strong></td>
+    <td><strong>Date &amp; Time</strong></td>
+  </tr>
+  {% for r in rows %}
+  <tr>
+    <td>{{ r.user }}</td>
+    <td>{{ r.fname }}</td>
+    <td>{{ r.sk }}</td>
+    <td>{{ r.dt }}</td>
+  </tr>
+  {% else %}
+  <tr><td colspan="4">No attackers recorded.</td></tr>
+  {% endfor %}
+</table>
+<p><a href="{{ url_for(back) }}">Back</a></p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>Sidebar</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    {% if menu == 'trustee' %}
+    <li><a href="{{ url_for('trustee_main') }}">Home</a></li>
+    <li><a href="{{ url_for('trustee_generate_key') }}">Generate Private Key</a></li>
+    {% else %}
+    <li><a href="{{ url_for('cloud_main') }}">Home</a></li>
+    <li><a href="{{ url_for('cloud_files') }}">View All Cloud Files</a></li>
+    <li><a href="{{ url_for('cloud_transactions') }}">View All Transactions</a></li>
+    {% endif %}
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}

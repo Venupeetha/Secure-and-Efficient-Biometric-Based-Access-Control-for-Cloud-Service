@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Confirm Download Files{% endblock %}
+{% block content %}
+<h2 class="style12">Confirm Download Files</h2>
+<p>&nbsp;</p>
+<div class="clr"></div>
+<form action="{{ url_for('client_download2') }}" method="post" name="form1" id="form1">
+<table width="598" border="1" align="center">
+  <tr>
+    <td width="286" bgcolor="#FFFF00"><span class="style12">Enter File Name :- </span></td>
+    <td width="356"><input name="t1" type="text" size="50" value="{{ row.fname }}" readonly="readonly" /></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFF00"><span class="style12">Enter Owner Name :- </span></td>
+    <td><input name="t12" type="text" size="50" value="{{ oname }}" readonly="readonly" /></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFF00"><span class="style12">Secret Key :- </span></td>
+    <td><input required="required" name="t13" type="text" size="50" /></td>
+  </tr>
+  <tr>
+    <td><div align="right"></div></td>
+    <td><input type="submit" name="Submit2" value="Download" /></td>
+  </tr>
+</table>
+</form>
+<p>File found: <strong>{{ row.fname }}</strong> (owner {{ row.user }},
+access: {{ row.Access }}, rank {{ row.rank }}). Enter the secret key the
+Trustee generated for this file. You can see it on the View All Files page
+or the Trustee's Generate Private Key page.</p>
+<p><a href="{{ url_for('client_download') }}">Back</a></p>
+{% endblock %}
+{% block sidebar %}
+<div class="gadget">
+  <h2 class="star"><span>Client</span> Menu</h2>
+  <div class="clr"></div>
+  <ul class="sb_menu">
+    <li><a href="{{ url_for('client_main') }}">Home</a></li>
+    <li><a href="{{ url_for('client_files') }}">View All Files</a></li>
+    <li><a href="{{ url_for('client_download') }}">Download</a></li>
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
+{% endblock %}
