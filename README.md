@@ -246,8 +246,8 @@ pattern for each demo account on first run.
 
 ```bash
 # 1. Get the code
-git clone https://github.com/Venupeetha/final-year-project.git
-cd final-year-project
+git clone https://github.com/Venupeetha/Secure-and-Efficient-Biometric-Based-Access-Control-for-Cloud-Service.git
+cd Secure-and-Efficient-Biometric-Based-Access-Control-for-Cloud-Service
 
 # 2. Install the packages (use `python -m pip`, never bare `pip`)
 python -m pip install -r requirements.txt
